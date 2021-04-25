@@ -4,6 +4,7 @@ namespace Bolg.Models
 {
     public class Post
     {
+        public int Id { get; set; }
         public String Title { get; set; } = "";
         public String Body { get; set; } = "";
 

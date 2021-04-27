@@ -55,7 +55,6 @@ namespace Bolg
                 Console.WriteLine(e.Message);
             }
 
-
             host.Run();
         }
 

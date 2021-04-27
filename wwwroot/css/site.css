@@ -1,0 +1,32 @@
+﻿
+body{
+    margin:0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav{
+    background-color: #0f2a30;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+nav a {
+    display:inline-block;
+    padding:15px;
+
+}
+
+.main-img{
+    background-image:url('../content/static/background.jpg');
+    background-position:center;
+    background-size:cover;
+}

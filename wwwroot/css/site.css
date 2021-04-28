@@ -1,6 +1,7 @@
 ﻿
 body{
     margin:0;
+    background-color:#9c9c9c;
 }
 
 a {
@@ -26,7 +27,50 @@ nav a {
 }
 
 .main-img{
+    height:500px;
     background-image:url('../content/static/background.jpg');
     background-position:center;
     background-size:cover;
+}
+
+.title{
+    position:absolute;
+    color:white;
+    font-size:40px;
+    left:50%;
+    transform:translateX(-50%);
+    top:20%;
+    text-shadow:0 0 8px black;
+}
+
+.container{
+    max-width:800px;
+    width:100%;
+    margin:auto;
+
+}
+
+.post {
+    margin:10px;
+    position: relative;
+    display: flex;
+    height: 400px;
+    box-shadow:0 0 10px 0 black;
+}
+
+.post img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.post-boby{
+    margin:-10px 10px 0;
+    padding:30px 10px;
+    background:white;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+}
+
+.no-shadow{
+    box-shadow:none;
 }

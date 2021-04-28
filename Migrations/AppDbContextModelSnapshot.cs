@@ -27,9 +27,15 @@ namespace Bolg.Migrations
 
                     b.Property<string>("Body");
 
+                    b.Property<string>("Category");
+
                     b.Property<DateTime>("Created");
 
+                    b.Property<string>("Description");
+
                     b.Property<string>("Image");
+
+                    b.Property<string>("Tag");
 
                     b.Property<string>("Title");
 

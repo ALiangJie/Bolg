@@ -10,6 +10,10 @@ namespace Bolg.Models
         public string Body { get; set; } = "";
         public string Image { get; set; } = "";
 
+        public string Description { get; set; } = "";
+        public string Tag { get; set; } = "";
+        public string Category { get; set; } = "";
+
         public DateTime Created { get; set; } = DateTime.Now;
     }
 }

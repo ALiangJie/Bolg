@@ -1,26 +1,28 @@
 ﻿@model IEnumerable<Post>
 
-@{ 
+@{
 
 }
 
 <h2>Admin Panel!</h2>
-
+<a asp-controller="Panel" asp-action="Edit">
+    创建新博客
+</a>
 <div>
     <ul>
-        @foreach(var post in Model)
+        @foreach (var post in Model)
         {
-        <li>
+            <li>
                 @post.Title
-            -
-            <a asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id">
-                Edit
-            </a>
-            -
-            <a asp-controller="Panel" asp-action="Remove" asp-route-id="@post.Id">
-                Remove
-            </a>
-        </li>
+                -
+                <a asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id">
+                    Edit
+                </a>
+                -
+                <a asp-controller="Panel" asp-action="Remove" asp-route-id="@post.Id">
+                    Remove
+                </a>
+            </li>
         }
     </ul>
 </div>

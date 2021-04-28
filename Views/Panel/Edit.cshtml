@@ -4,6 +4,8 @@
 
 }
 
+
+<link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
 <div>
     <form asp-controller="Panel" asp-action="Edit" method="post" enctype="multipart/form-data">
         <input asp-for="Id" type="hidden" />
@@ -11,16 +13,45 @@
             <label>Title</label>
             <input asp-for="Title" />
         </div>
-
+        <div>
+            <label>Description</label>
+            <input asp-for="Description" />
+        </div>
+        <div>
+            <label>Tag</label>
+            <input asp-for="Tag" />
+        </div>
+        <div>
+            <label>Category</label>
+            <select asp-for="Category">
+                <option value="Travel">Travel</option>
+                <option value="Programing">Programing</option>
+                <option value="Photograph">Photograph</option>
+            </select>
+        </div>
         <div>
             <label>Body</label>
-            <input asp-for="Body" />
+            <textarea id="editor" asp-for="Body"></textarea>
         </div>
 
         <div>
             <label>Image</label>
+            <input asp-for="CurrentImage" type="hidden" />
             <input asp-for="Image" />
         </div>
         <input type="submit" value="Submit" />
     </form>
 </div>
+
+@section scripts {
+
+    <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/lib/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script>
+        $('#editor').trumbowyg();
+
+                //.-class
+                //# - id
+                //nav - html element
+    </script>
+}

@@ -26,11 +26,11 @@ nav a {
 
 }
 
-.main-img{
-    height:500px;
-    background-image:url('../content/static/background.jpg');
-    background-position:center;
-    background-size:cover;
+.main-img {
+    height: 500px;
+    background-image: url('../content/static/background.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .title{

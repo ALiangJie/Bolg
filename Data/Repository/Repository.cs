@@ -29,7 +29,14 @@ namespace Bolg.Data.Repository
 
         public List<Post> GetAllPosts(string category)
         {
-            return _ctx.Posts.Where(post => post.Category.ToLower().Equals(category.ToLower()))
+            Func<Post, bool> InCategory = (post) => { return post.Category.ToLower().Equals(category.ToLower()); };
+            //InCategory(a)=2;
+            //InCategory(b)=10;
+            //var a = 2;
+            //F#,Clojure,Haskell
+
+            return _ctx.Posts
+                .Where(post => InCategory(post))
                 .ToList();
         }
 

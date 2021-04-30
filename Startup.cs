@@ -58,8 +58,10 @@ namespace Bolg
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                
             }
+
+            app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();
 

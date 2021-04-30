@@ -4,6 +4,7 @@
     ViewBag.Title = Model.Title;
     ViewBag.Description = Model.Description;
     ViewBag.Keywords = $"{Model.Tag?.Replace(",", " ")} {Model.Category}";
+    var base_path = Context.Request.PathBase;
 }
 
 
@@ -20,7 +21,7 @@
     <div class="post no-shadow">
         @if (!String.IsNullOrEmpty(Model.Image))
         {
-            var image_path = $"/Image/{Model.Image}";
+            var image_path = $"{base_path}/Image/{Model.Image}";
             <img src="@image_path" width="500" />
             <span class=" title">
                 @Model.Title

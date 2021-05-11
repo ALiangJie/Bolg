@@ -1,4 +1,5 @@
 ﻿using Bolg.Models;
+using Bolg.Models.Comments;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,6 +15,9 @@ namespace Bolg.Data
         {
 
         }
-        public DbSet<Post> Posts { get; set; }  
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<MainComment> MainComments { get; set; }
+        public DbSet<SubComment> SubComments { get; set; }
+
     }
 }

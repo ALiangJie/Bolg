@@ -1,4 +1,6 @@
 ﻿using Bolg.Models;
+using Bolg.Models.Comments;
+using Bolg.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +13,13 @@ namespace Bolg.Data.Repository
     {
         Post GetPost(int id);
         List<Post> GetAllPosts();
-        List<Post> GetAllPosts(string Category);
+        IndexViewModle GetAllPosts(int pageNumber, string Category);
         void AddPost(Post post);
         void UpdatePost(Post post);
         void RemovePost(int id);
 
+
+        void AddSubComment(SubComment comment);
 
         Task<bool> SaveChangesAsybc();
     }

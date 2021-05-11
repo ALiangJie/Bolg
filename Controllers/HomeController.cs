@@ -2,6 +2,8 @@
 using Bolg.Data.FileManager;
 using Bolg.Data.Repository;
 using Bolg.Models;
+using Bolg.Models.Comments;
+using Bolg.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,12 +23,30 @@ namespace Bolg.Controllers
         {
             _repo = repo;
             _fileManager = fileManager;
+
         }
 
-        public IActionResult Index(string category) => 
-            View(string.IsNullOrEmpty(category) ? 
-                _repo.GetAllPosts() : 
-                _repo.GetAllPosts(category));
+        public IActionResult Index(int pageNumber, string category)
+        {
+            if (pageNumber < 1)
+            {
+                return RedirectToAction("Index", new { pageNumber = 1, category });
+            }
+
+            //var vm = new IndexViewModle
+            //{
+            //    PageNumber = pageNumber,
+            //    Posts = string.IsNullOrEmpty(category) ?
+            //        _repo.GetAllPosts(pageNumber) :
+            //        _repo.GetAllPosts(category)
+            //};
+
+            var vm = _repo.GetAllPosts(pageNumber,category);
+
+
+            return View(vm);
+        }
+
 
 
         //public IActionResult Index(string category)
@@ -46,6 +66,7 @@ namespace Bolg.Controllers
         //}
 
         [HttpGet("/Image/{image}")]
+        [ResponseCache(CacheProfileName ="Monthly")]
         public IActionResult Image(string image) =>
             new FileStreamResult(
                 _fileManager.ImageStream(image), 
@@ -57,5 +78,42 @@ namespace Bolg.Controllers
         //    var mine = image.Substring(image.LastIndexOf('.') + 1);
         //    return new FileStreamResult(_fileManager.ImageStream(image), $"image/{mine}");
         //}
+
+        [HttpPost]
+        public async Task<IActionResult> Comment(CommentViewModel vm)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction("post", new { id = vm.PostId });
+
+            var post = _repo.GetPost(vm.PostId);
+            if (vm.MainCommentId==0)
+            {
+                post.MainComments = post.MainComments ?? new List<MainComment>();
+
+                post.MainComments.Add(new MainComment
+                {
+                    Message = vm.Message,
+                    Created = DateTime.Now,
+                });
+
+                _repo.UpdatePost(post);
+            }
+            else
+            {
+                var comment = new SubComment
+                {
+                    MainCommentId = vm.MainCommentId,
+                    Message = vm.Message,
+                    Created = DateTime.Now,
+                };
+                _repo.AddSubComment(comment);
+            }
+
+
+            await _repo.SaveChangesAsybc();
+
+            return RedirectToAction("post", new { id = vm.PostId });
+        }
+
     }
 }

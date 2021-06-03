@@ -26,27 +26,34 @@
 <body>
     <div>
         <nav>
-            <a asp-controller="Home" asp-action="Index">Home</a>
-            <a asp-controller="Home" asp-action="Index" asp-route-category="Programing">Programing</a>
+            <a asp-controller="Home" asp-action="Index">主页</a>
+            <a asp-controller="Home" asp-action="Index" asp-route-category="Programing">程序栏</a>
 
 
             @*<a asp-controller="Panel" asp-action="Edit">Create Post</a>*@
-            <a asp-controller="Panel" asp-action="Index">Admin Panel</a>
-
+            <a asp-controller="Panel" asp-action="Index">控制台</a>
 
             @if (User.Identity.IsAuthenticated)
             {
-                <a asp-controller="Auth" asp-action="Logout">Logout</a>
+                <a asp-controller="Auth" asp-action="Logout">注销</a>
             }
             else
             {
-                <a asp-controller="Auth" asp-action="Login">Sign In</a>
+                <a asp-controller="Auth" asp-action="Login">登录</a>
             }
         </nav>
     </div>
+
+    <div>
+        <nav>
+            <a href="http://1.116.232.234/app-release.apk">安卓音乐播放器AKP下载</a>
+        </nav>
+    </div>
+
     <div>
         @RenderBody()
     </div>
+
     @RenderSection("scripts", false)
 </body>
 </html>
